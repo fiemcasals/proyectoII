@@ -3,4 +3,4 @@ project(ProyectoII)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(ProyectoII main.cpp)
+add_executable(ProyectoII main.cpp claseGato.h raton.h)
