@@ -33,8 +33,15 @@ public:
     }
     void mostrar(){
         for (int i = 0; i < F; ++i) {
+            if(i==0){
+                cout<<"     "<<i<<"-";} else
+                cout<<i<<"-";
+        }
+        cout<<"\n";
+        for (int i = 0; i < F; ++i) {
+            printf("%d-->",i);
             for (int j = 0; j < C; ++j) {
-                printf("%c|",m[i][j]);
+                printf("|%c",m[i][j]);
             }
             printf("\n");
         }
@@ -169,6 +176,7 @@ public:
     }
     void gestion(){
         Mapa mapa;
+        int ratones[]={0,0,0,0,0,0,0};
         Raton raton1(20.0,0,0,1);
         Raton raton2(10.0,1,7,2);
         Raton raton3(4.0,3,3,3);
@@ -187,9 +195,13 @@ public:
         insertarRaton(mapa,raton7);
         insertarGato(mapa,tom);
         int ratonprevio=0;
+        cout<<"Bienvenido al experimento:\nUsted observa al gato TOM respresentado por un 0 y puede mandarlo a correr por cualquier lugar libre del espacio\no puede seleccionar un raton(numerados del 1 al 7 de abajo hacia arriba), para que tom se alimente,comiendose ese raton\nCada vez que tom corre consume energia y cuando se come un raton recupera energia"<<endl;
+        system("PAUSE");
+        system("cls");
         while (true){
             mapa.mostrar();
             int respuesta;
+            cout<<"--------------------------------------------------------------------------"<<endl;
             cout<<"Que hace TOM:\n 1-Corre\n2-Se come un raton\n3-Ver estado actual\n4-Me canse de ver a TOM:"<<endl;
             respuesta= obtenerRespuestaValida();
             if (tom.getEnergia()<0){
@@ -220,27 +232,55 @@ public:
                     int rat;
                     cout<<"Que raton se come tom??";
                     rat=obtenerRatonValido();
-                    if(rat==ratonprevio)
-                    {
-                        cout<<"Tom ya se comio ese raton"<<endl;
-                        ratonprevio=rat;
-                    }else{
-                        if (rat==1){
-                            realizarMvimiento(mapa,tom,raton1);
-                        }else if (rat==2){
-                            realizarMvimiento(mapa,tom,raton2);
-                        }else if (rat==3){
-                            realizarMvimiento(mapa,tom,raton3);
-                        }else if (rat==4){
-                            realizarMvimiento(mapa,tom,raton4);
-                        }else if (rat==5){
-                            realizarMvimiento(mapa,tom,raton5);
-                        }else if (rat==6){
-                            realizarMvimiento(mapa,tom,raton6);
-                        }else {
-                            realizarMvimiento(mapa,tom,raton7);
+                    if (rat==1){
+                        if (ratones[0]==0) {
+                            realizarMvimiento(mapa, tom, raton1);
+                            ratones[0]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
                         }
-                        ratonprevio=rat;
+                    }else if (rat==2){
+                        if (ratones[1]==0) {
+                            realizarMvimiento(mapa, tom, raton2);
+                            ratones[1]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
+                    }else if (rat==3){
+                        if (ratones[2]==0) {
+                            realizarMvimiento(mapa, tom, raton3);
+                            ratones[2]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
+                    }else if (rat==4){
+                        if (ratones[3]==0) {
+                            realizarMvimiento(mapa, tom, raton4);
+                            ratones[3]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
+                    }else if (rat==5){
+                        if (ratones[4]==0) {
+                            realizarMvimiento(mapa, tom, raton5);
+                            ratones[4]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
+                    }else if (rat==6){
+                        if (ratones[5]==0) {
+                            realizarMvimiento(mapa, tom, raton6);
+                            ratones[5]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
+                    }else {
+                        if (ratones[6]==0) {
+                            realizarMvimiento(mapa, tom, raton7);
+                            ratones[6]=1;
+                        } else{
+                            cout<<"Tom ya se comio ese raton"<<endl;
+                        }
                     }
                 } else if(respuesta==3){
                     tom.estadoActual();
@@ -250,6 +290,7 @@ public:
             }
             cout<<""<<endl;
             system("PAUSE");
+            system("cls");
         }
         tom.estadoActual();
     }

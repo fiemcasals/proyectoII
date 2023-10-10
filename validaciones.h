@@ -7,5 +7,4 @@
 int obtenerRespuestaValida();
 int obtenerPosicionValida();
 int obtenerRatonValido();
-float obtenerTiempValido();
 #endif //PROYECTOII_VALIDACIONES_H
