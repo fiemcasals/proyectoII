@@ -6,32 +6,39 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <limits>
 
 using namespace std;
 
-int obtenerRespuestaValida() {
-    int numero;
-    string entrada;
-    while (true) {
+int obtenerRespuestaValida() {//comento solo esta funcion por que en las demas se repite la logica pero con otras variables
+    int numero;             // Variable para almacenar la respuesta válida
+    string entrada;         // Variable para almacenar la entrada del usuario
+    while (true) {          // Un bucle infinito para obtener una respuesta válida
         cout << "Respuesta(1/2/3/4): ";
+        // Lee la entrada del usuario como una línea
         if (getline(cin, entrada)) {
-            stringstream ss(entrada);
+            stringstream ss(entrada); // Convierte la entrada en un flujo de stringstream
+            // Intenta extraer un número de la stringstream y verifica si no hay más datos
             if (ss >> numero && ss.eof()) {
-                if (numero==1 || numero==2 || numero==3 || numero==4) {
+                // Verifica si el número es 1, 2, 3 o 4
+                if (numero == 1 || numero == 2 || numero == 3 || numero == 4) {
+                    // Si el número es válido, sale del bucle
                     break;
                 } else {
-                    cout << "El numero debe ser 1,2,3 o 4. Intente de nuevo." << endl;
+                    // Si el número no es válido, muestra un mensaje de error
+                    cout << "El numero debe ser 1, 2, 3 o 4. Intente de nuevo." << endl;
                 }
             } else {
+                // Si la entrada no es un número válido, muestra un mensaje de error
                 cout << "Entrada invalida. Intente de nuevo." << endl;
             }
         } else {
+            // Si hay un error en la entrada, muestra un mensaje de error y limpia la entrada
             cout << "Error de entrada. Intente de nuevo." << endl;
             cin.clear();
             cin.ignore();
         }
     }
+    // Retorna el número válido
     return numero;
 }
 
@@ -84,7 +91,3 @@ int obtenerRatonValido() {
     }
     return numero;
 }
-
-
-
-
